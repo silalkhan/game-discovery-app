@@ -1,3 +1,4 @@
+import GameGrid from "./components/GameGrid";
 import NavBar from "./components/NavBar";
 
 function App() {
@@ -46,7 +47,7 @@ function App() {
           p-4
         "
       >
-        Main
+        <GameGrid />
       </main>
     </div>
   );

@@ -16,7 +16,7 @@ function ThemeBtn() {
         className="
           w-11 h-6 bg-gray-200 rounded-full
           peer dark:bg-gray-700
-          peer-checked:bg-blue-600
+          peer-checked:bg-green-600
           after:content-['']
           after:absolute
           after:top-[2px]
