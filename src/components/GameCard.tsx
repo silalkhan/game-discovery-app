@@ -1,0 +1,43 @@
+import type { Game } from "../hooks/useGames";
+
+interface Props {
+  game: Game;
+}
+
+function GameCard({ game }: Props) {
+  return (
+    <div
+      className="
+        rounded-lg
+        overflow-hidden
+        shadow-lg
+        bg-white
+        dark:bg-gray-800
+        transition-transform
+        duration-300
+        hover:scale-105
+      "
+    >
+      <img
+        src={game.background_image}
+        alt={game.name}
+        className="w-full h-52 object-cover"
+      />
+
+      <div className="p-4">
+        <h2
+          className="
+            text-2xl
+            font-bold
+            text-gray-800
+            dark:text-white
+          "
+        >
+          {game.name}
+        </h2>
+      </div>
+    </div>
+  );
+}
+
+export default GameCard;

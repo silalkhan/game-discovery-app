@@ -1,17 +1,27 @@
 import useGames from "../hooks/useGames";
+import GameCard from "./GameCard";
 
 function GameGrid() {
   const { games, error } = useGames();
+
   return (
     <>
-      {/* Loading Spinner */}
+      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
-      {error && <p>{error}</p>}
-      <ul className=" border-dotted">
+      <div
+        className="
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-3
+          gap-6
+          p-4
+        "
+      >
         {games.map((game) => (
-          <li key={game.id}>{game.name}</li>
+          <GameCard key={game.id} game={game} />
         ))}
-      </ul>
+      </div>
     </>
   );
 }
