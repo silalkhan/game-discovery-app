@@ -1,4 +1,5 @@
 import type { Game } from "../hooks/useGames";
+import PlatefromIconList from "./PlatefromIconList";
 
 interface Props {
   game: Game;
@@ -25,6 +26,7 @@ function GameCard({ game }: Props) {
       />
 
       <div className="p-4">
+        {/* Game Title */}
         <h2
           className="
             text-2xl
@@ -35,6 +37,11 @@ function GameCard({ game }: Props) {
         >
           {game.name}
         </h2>
+
+        {/* Platforms */}
+        <PlatefromIconList
+          platforms={game.parent_platforms.map((p) => p.platform)}
+        />
       </div>
     </div>
   );
