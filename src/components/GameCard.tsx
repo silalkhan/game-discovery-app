@@ -1,4 +1,5 @@
 import type { Game } from "../hooks/useGames";
+import CriticScore from "./CriticScore";
 import PlatefromIconList from "./PlatefromIconList";
 
 interface Props {
@@ -26,10 +27,19 @@ function GameCard({ game }: Props) {
       />
 
       <div className="p-4">
+        {/* Top Row */}
+        <div className="flex items-center justify-between mb-3">
+          <PlatefromIconList
+            platforms={game.parent_platforms.map((p) => p.platform)}
+          />
+
+          <CriticScore score={game.metacritic} />
+        </div>
+
         {/* Game Title */}
         <h2
           className="
-            text-2xl
+            text-xl
             font-bold
             text-gray-800
             dark:text-white
@@ -37,11 +47,6 @@ function GameCard({ game }: Props) {
         >
           {game.name}
         </h2>
-
-        {/* Platforms */}
-        <PlatefromIconList
-          platforms={game.parent_platforms.map((p) => p.platform)}
-        />
       </div>
     </div>
   );
