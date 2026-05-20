@@ -1,4 +1,5 @@
 import type { Game } from "../hooks/useGames";
+import getCroppedImageUrl from "../services/image-url";
 import CriticScore from "./CriticScore";
 import PlatefromIconList from "./PlatefromIconList";
 
@@ -21,7 +22,7 @@ function GameCard({ game }: Props) {
       "
     >
       <img
-        src={game.background_image}
+        src={getCroppedImageUrl(game.background_image)}
         alt={game.name}
         className="w-full h-52 object-cover"
       />
