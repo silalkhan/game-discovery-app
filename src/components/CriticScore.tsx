@@ -7,6 +7,7 @@ const CriticScore = ({ score }: Props) => {
     score > 75 ? "bg-green-600" : score > 60 ? "bg-yellow-500" : "bg-red-600";
 
   return (
+    //Badge
     <span
       className={`
         ${scoreColor}

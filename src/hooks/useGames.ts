@@ -27,6 +27,7 @@ const useGames = () => {
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(true);
     apiClient
       .get<FetchGamesResponse>("/games", { signal })
