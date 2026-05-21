@@ -2,7 +2,29 @@ import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
 const GenreList = () => {
-  const { data } = useGenres();
+  const { data, isLoading, error } = useGenres();
+
+  if (isLoading) return null;
+
+  //you can also use skeleton instead of spinner best chelang for you.
+
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center py-10">
+        <div
+          className="
+            w-10
+            h-10
+            border-4
+            border-gray-300
+            border-t-blue-500
+            rounded-full
+            animate-spin
+          "
+        ></div>
+      </div>
+    );
+
   return (
     <ul className="space-y-3">
       {data.map((genre) => (
@@ -30,6 +52,7 @@ const GenreList = () => {
               object-cover
             "
           />
+
           <p
             className="
               text-gray-800
