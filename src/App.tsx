@@ -1,4 +1,5 @@
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
           p-4
         "
       >
-        Aside
+        <GenreList />
       </aside>
 
       {/* Main Content */}
