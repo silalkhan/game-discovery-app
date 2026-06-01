@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatforms";
+import type { Platform } from "../hooks/useGames";
 
-const PlatformSelector = () => {
+interface Props {
+  onSelectedPlatfrom: (Platform: Platform) => void;
+  selectedPlatfrom: Platform | null;
+}
+
+const PlatformSelector = ({ onSelectedPlatfrom, selectedPlatfrom }: Props) => {
   const { data, error } = usePlatforms();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,7 +30,7 @@ const PlatformSelector = () => {
           transition
         "
       >
-        Platforms
+        {selectedPlatfrom?.name || "Platforms"}
         <BsChevronDown
           className={`
             transition-transform duration-300
@@ -46,6 +52,7 @@ const PlatformSelector = () => {
         >
           {data.map((platform) => (
             <button
+              onClick={() => onSelectedPlatfrom(platform)}
               key={platform.id}
               className="
                 block w-full text-left px-4 py-2

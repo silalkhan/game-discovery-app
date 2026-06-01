@@ -4,12 +4,17 @@ import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
 import type { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
+import type { Platform } from "./hooks/useGames";
 
 function App() {
   //declear state variable for storing select genre
   //genric type urgumnt
 
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  //filtering Games by Platfrom.
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null,
+  );
 
   return (
     <div
@@ -58,8 +63,14 @@ function App() {
           p-4
         "
       >
-        <PlatformSelector />
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformSelector
+          selectedPlatfrom={selectedPlatform}
+          onSelectedPlatfrom={(platform) => setSelectedPlatform(platform)}
+        />
+        <GameGrid
+          selectedGenre={selectedGenre}
+          selectedPlatform={selectedPlatform}
+        />
       </main>
     </div>
   );
