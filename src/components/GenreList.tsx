@@ -4,10 +4,11 @@ import GenreListSkeleton from "./GenreListSkeleton";
 
 interface Props {
   onSelectedGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectedGenre }: Props) => {
-  const { data, isLoading, error } = useGenres();
+const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
+  const { data, isLoading } = useGenres();
 
   //you can also use skeleton instead of spinner best chelang for you.
 
@@ -36,16 +37,13 @@ const GenreList = ({ onSelectedGenre }: Props) => {
           />
 
           <button
-            className="
-          text-lg
-          text-left
-          text-gray-800
-          dark:text-gray-100
-          hover:text-blue-500
-          transition-colors
-          cursor-pointer
-        "
             onClick={() => onSelectedGenre(genre)}
+            className={`text-lg text-left cursor-pointer transition-colors
+    ${
+      genre.id === selectedGenre?.id
+        ? "font-bold text-blue-500"
+        : "text-gray-800 dark:text-gray-100"
+    }`}
           >
             {genre.name}
           </button>

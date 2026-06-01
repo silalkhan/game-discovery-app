@@ -39,18 +39,16 @@ function App() {
         className="
           hidden
           lg:block
-          bg-gray-200
-          dark:bg-gray-800
-          p-4
-        "
+       bg-gray-200
+       dark:bg-gray-800
+        p-4
+      "
       >
         <GenreList
-          onSelectedGenre={(genre) => {
-            setSelectedGenre(genre);
-          }}
+          selectedGenre={selectedGenre}
+          onSelectedGenre={setSelectedGenre}
         />
       </aside>
-
       {/* Main Content */}
       <main
         className="
