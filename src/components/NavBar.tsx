@@ -2,7 +2,10 @@ import logo from "../assets/gameHublogo.webp";
 import SearchInput from "./SearchInput";
 import ThemeBtn from "./ThemeBtn";
 
-function NavBar() {
+interface Props {
+  onSearch: (searchText: string) => void;
+}
+function NavBar({ onSearch }: Props) {
   return (
     <div className="flex items-center justify-between gap-4 p-2">
       {/* LEFT */}
@@ -13,7 +16,7 @@ function NavBar() {
 
       {/* CENTER (SEARCH) */}
       <div className="flex-1 max-w-xl">
-        <SearchInput />
+        <SearchInput onSearch={onSearch} />
       </div>
 
       {/* RIGHT */}

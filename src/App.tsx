@@ -12,6 +12,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -44,7 +45,9 @@ function App() {
     >
       {/* Navbar */}
       <nav className="p-4 lg:col-span-2">
-        <NavBar />
+        <NavBar
+          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+        />
       </nav>
 
       {/* Sidebar */}
