@@ -1,16 +1,20 @@
-import useGames, { type Platform } from "../hooks/useGames";
-import type { Genre } from "../hooks/useGenres";
+import type { GameQuery } from "../App";
+import useGames from "../hooks/useGames";
+//import type { Genre } from "../hooks/useGenres";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
+
+  //remove..
+  //selectedGenre: Genre | null;
+  //selectedPlatform: Platform | null;
 }
 
-function GameGrid({ selectedGenre, selectedPlatform }: Props) {
-  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
+function GameGrid({ gameQuery }: Props) {
+  const { data, error, isLoading } = useGames(gameQuery);
   //Grid skeleton
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   //Grid

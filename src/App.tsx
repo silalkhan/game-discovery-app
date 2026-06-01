@@ -6,15 +6,20 @@ import type { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import type { Platform } from "./hooks/useGames";
 
+//Refactoring: Extracting a Query Object...
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
+
 function App() {
   //declear state variable for storing select genre
   //genric type urgumnt
 
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  //const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   //filtering Games by Platfrom.
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-    null,
-  );
+  //const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <div
@@ -51,8 +56,8 @@ function App() {
       "
       >
         <GenreList
-          selectedGenre={selectedGenre}
-          onSelectedGenre={setSelectedGenre}
+          selectedGenre={gameQuery.genre}
+          onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
         />
       </aside>
       {/* Main Content */}
@@ -64,13 +69,12 @@ function App() {
         "
       >
         <PlatformSelector
-          selectedPlatfrom={selectedPlatform}
-          onSelectedPlatfrom={(platform) => setSelectedPlatform(platform)}
+          selectedPlatfrom={gameQuery.platform}
+          onSelectedPlatfrom={(platform) =>
+            setGameQuery({ ...gameQuery, platform })
+          }
         />
-        <GameGrid
-          selectedGenre={selectedGenre}
-          selectedPlatform={selectedPlatform}
-        />
+        <GameGrid gameQuery={gameQuery} />
       </main>
     </div>
   );
