@@ -11,6 +11,7 @@ import SortSelector from "./components/SortSelector";
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sortOrder: string;
 }
 
 function App() {
@@ -64,18 +65,27 @@ function App() {
       {/* Main Content */}
       <main
         className="
-          bg-gray-100
-          dark:bg-gray-950
-          p-4
-        "
+    bg-gray-100
+    dark:bg-gray-950
+    p-4
+  "
       >
-        <PlatformSelector
-          selectedPlatfrom={gameQuery.platform}
-          onSelectedPlatfrom={(platform) =>
-            setGameQuery({ ...gameQuery, platform })
-          }
-        />
-        <SortSelector />
+        <div className="flex items-center gap-4 mb-6">
+          <PlatformSelector
+            selectedPlatfrom={gameQuery.platform}
+            onSelectedPlatfrom={(platform) =>
+              setGameQuery({ ...gameQuery, platform })
+            }
+          />
+
+          <SortSelector
+            onSelectSortOrder={(sortOrder) =>
+              setGameQuery({ ...gameQuery, sortOrder })
+            }
+            sortOrder={gameQuery.sortOrder}
+          />
+        </div>
+
         <GameGrid gameQuery={gameQuery} />
       </main>
     </div>
