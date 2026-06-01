@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import type { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import type { Platform } from "./hooks/useGames";
+import SortSelector from "./components/SortSelector";
 
 //Refactoring: Extracting a Query Object...
 export interface GameQuery {
@@ -74,6 +75,7 @@ function App() {
             setGameQuery({ ...gameQuery, platform })
           }
         />
+        <SortSelector />
         <GameGrid gameQuery={gameQuery} />
       </main>
     </div>
