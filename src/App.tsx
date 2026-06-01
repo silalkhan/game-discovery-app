@@ -1,8 +1,15 @@
+import { useState } from "react";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
+import type { Genre } from "./hooks/useGenres";
 
 function App() {
+  //declear state variable for storing select genre
+  //genric type urgumnt
+
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
   return (
     <div
       className="
@@ -37,7 +44,11 @@ function App() {
           p-4
         "
       >
-        <GenreList />
+        <GenreList
+          onSelectedGenre={(genre) => {
+            setSelectedGenre(genre);
+          }}
+        />
       </aside>
 
       {/* Main Content */}
@@ -48,7 +59,7 @@ function App() {
           p-4
         "
       >
-        <GameGrid />
+        <GameGrid selectedGenre={selectedGenre} />
       </main>
     </div>
   );

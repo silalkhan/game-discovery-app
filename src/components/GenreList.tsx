@@ -1,29 +1,17 @@
-import useGenres from "../hooks/useGenres";
+import useGenres, { type Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import GenreListSkeleton from "./GenreListSkeleton";
 
-const GenreList = () => {
+interface Props {
+  onSelectedGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
-
-  if (isLoading) return null;
 
   //you can also use skeleton instead of spinner best chelang for you.
 
-  if (isLoading)
-    return (
-      <div className="flex justify-center items-center py-10">
-        <div
-          className="
-            w-10
-            h-10
-            border-4
-            border-gray-300
-            border-t-blue-500
-            rounded-full
-            animate-spin
-          "
-        ></div>
-      </div>
-    );
+  if (isLoading) return <GenreListSkeleton />;
 
   return (
     <ul className="space-y-3">
@@ -31,37 +19,36 @@ const GenreList = () => {
         <li
           key={genre.id}
           className="
-            flex
-            items-center
-            gap-3
-            cursor-pointer
-            hover:bg-gray-100
-            dark:hover:bg-gray-700
-            p-2
-            rounded-lg
-            transition-colors
-          "
+        flex
+        items-center
+        gap-3
+        p-2
+        rounded-lg
+        hover:underline
+        hover:bg-gray-100 
+        dark:hover:bg-gray-700 
+      "
         >
           <img
             src={getCroppedImageUrl(genre.image_background)}
             alt={genre.name}
-            className="
-              w-8
-              h-8
-              rounded-lg
-              object-cover
-            "
+            className="w-8 h-8 rounded-lg object-cover"
           />
 
-          <p
+          <button
             className="
-              text-gray-800
-              dark:text-gray-100
-              font-medium
-            "
+          text-lg
+          text-left
+          text-gray-800
+          dark:text-gray-100
+          hover:text-blue-500
+          transition-colors
+          cursor-pointer
+        "
+            onClick={() => onSelectedGenre(genre)}
           >
             {genre.name}
-          </p>
+          </button>
         </li>
       ))}
     </ul>
