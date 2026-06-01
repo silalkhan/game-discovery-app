@@ -6,6 +6,7 @@ import type { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import type { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 
 //Refactoring: Extracting a Query Object...
 export interface GameQuery {
@@ -73,6 +74,7 @@ function App() {
     p-4
   "
       >
+        <GameHeading gameQuery={gameQuery} />
         <div className="flex items-center gap-4 mb-6">
           <PlatformSelector
             selectedPlatfrom={gameQuery.platform}
