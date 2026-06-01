@@ -3,6 +3,7 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
 import type { Genre } from "./hooks/useGenres";
+import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
   //declear state variable for storing select genre
@@ -57,6 +58,7 @@ function App() {
           p-4
         "
       >
+        <PlatformSelector />
         <GameGrid selectedGenre={selectedGenre} />
       </main>
     </div>
