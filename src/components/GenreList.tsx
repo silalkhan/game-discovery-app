@@ -16,7 +16,9 @@ const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
 
   return (
     <>
-      <h1 className=" text-2xl font-bold mb-3">Genres</h1>
+      <h1 className="text-2xl font-bold mb-4 px-2 text-gray-900 dark:text-white">
+        Genres
+      </h1>
       <ul className="space-y-3">
         {data.map((genre) => (
           <li

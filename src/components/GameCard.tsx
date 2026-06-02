@@ -1,6 +1,7 @@
 import type { Game } from "../hooks/useGames";
 import getCroppedImageUrl from "../services/image-url";
 import CriticScore from "./CriticScore";
+import Emoji from "./Emoji";
 import PlatefromIconList from "./PlatefromIconList";
 
 interface Props {
@@ -48,6 +49,7 @@ function GameCard({ game }: Props) {
         >
           {game.name}
         </h2>
+        <Emoji rating={game.rating_top} />
       </div>
     </div>
   );

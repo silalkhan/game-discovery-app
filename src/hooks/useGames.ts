@@ -16,9 +16,12 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  rating_top: number; //whole numbr
+  //rating: number; //floating numbr
+  //rating emojis according to rating top so remove rating.
 }
 
-const useGames = (gameQuery:GameQuery) =>
+const useGames = (gameQuery: GameQuery) =>
   useData<Game>(
     "/games",
     {
@@ -26,10 +29,10 @@ const useGames = (gameQuery:GameQuery) =>
         genres: gameQuery.genre?.id,
         platform: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder,
-        search: gameQuery.searchText
+        search: gameQuery.searchText,
       },
     },
-    [gameQuery]
+    [gameQuery],
   );
 
 export default useGames;
