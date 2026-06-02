@@ -4,7 +4,7 @@ import usePlatforms from "../hooks/usePlatforms";
 import type { Platform } from "../hooks/useGames";
 
 interface Props {
-  onSelectedPlatfrom: (Platform: Platform) => void;
+  onSelectedPlatfrom: (platform: Platform) => void;
   selectedPlatfrom: Platform | null;
 }
 
@@ -18,7 +18,7 @@ const PlatformSelector = ({ onSelectedPlatfrom, selectedPlatfrom }: Props) => {
     <div className="relative inline-block">
       {/* Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen((prev) => !prev)}
         className="
           flex items-center gap-2
           px-4 py-2
@@ -31,6 +31,7 @@ const PlatformSelector = ({ onSelectedPlatfrom, selectedPlatfrom }: Props) => {
         "
       >
         {selectedPlatfrom?.name || "Platforms"}
+
         <BsChevronDown
           className={`
             transition-transform duration-300
@@ -52,11 +53,15 @@ const PlatformSelector = ({ onSelectedPlatfrom, selectedPlatfrom }: Props) => {
         >
           {data.map((platform) => (
             <button
-              onClick={() => onSelectedPlatfrom(platform)}
               key={platform.id}
+              onClick={() => {
+                onSelectedPlatfrom(platform);
+                setIsOpen(false); // ✅ CLOSE DROPDOWN
+              }}
               className="
                 block w-full text-left px-4 py-2
                 hover:bg-gray-100 dark:hover:bg-gray-700
+                transition
               "
             >
               {platform.name}

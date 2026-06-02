@@ -7,22 +7,16 @@ interface Props {
 }
 function NavBar({ onSearch }: Props) {
   return (
-    <div className="flex items-center justify-between gap-4 p-2">
-      {/* LEFT */}
-      <div className="flex items-center gap-3 shrink-0">
-        <img src={logo} alt="GameHub Logo" className="w-28 h-14 object-cover" />
-        <p className="text-xl font-bold dark:text-white">GameHub</p>
-      </div>
+    <div className="flex items-center gap-3 w-full">
+      <img
+        src={logo}
+        alt="GameHub Logo"
+        className="w-16 h-16 md:w-24 md:h-24 object-contain shrink-0"
+      />
 
-      {/* CENTER (SEARCH) */}
-      <div className="flex-1 max-w-xl">
-        <SearchInput onSearch={onSearch} />
-      </div>
+      <SearchInput onSearch={onSearch} />
 
-      {/* RIGHT */}
-      <div className="shrink-0">
-        <ThemeBtn />
-      </div>
+      <ThemeBtn />
     </div>
   );
 }
