@@ -18,12 +18,10 @@ function GameGrid({ gameQuery }: Props) {
   //Grid skeleton
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   //Grid
+  if (error) return <p className="text-red-500 text-center mb-4">{error}</p>;
   return (
-    <>
-      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-
-      <div
-        className="
+    <div
+      className="
           grid
           grid-cols-1
           sm:grid-cols-2
@@ -31,21 +29,20 @@ function GameGrid({ gameQuery }: Props) {
           gap-6
           p-4
         "
-      >
-        {isLoading &&
-          skeletons.map((skeleton) => (
-            <GameCardContainer key={skeleton}>
-              <GameCardSkeleton />
-            </GameCardContainer>
-          ))}
-
-        {data.map((game) => (
-          <GameCardContainer key={game.id}>
-            <GameCard game={game} />
+    >
+      {isLoading &&
+        skeletons.map((skeleton) => (
+          <GameCardContainer key={skeleton}>
+            <GameCardSkeleton />
           </GameCardContainer>
         ))}
-      </div>
-    </>
+
+      {data.map((game) => (
+        <GameCardContainer key={game.id}>
+          <GameCard game={game} />
+        </GameCardContainer>
+      ))}
+    </div>
   );
 }
 
