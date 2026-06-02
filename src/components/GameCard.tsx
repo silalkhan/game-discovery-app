@@ -16,7 +16,7 @@ function GameCard({ game }: Props) {
         overflow-hidden
         shadow-lg
         bg-white
-        dark:bg-gray-800
+        dark:bg-black
         transition-transform
         duration-300
         hover:scale-105

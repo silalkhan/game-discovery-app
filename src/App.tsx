@@ -37,7 +37,7 @@ function App() {
         bg-white
         text-black
 
-        dark:bg-gray-900
+        dark:bg-black
         dark:text-white
 
         transition-colors
@@ -57,7 +57,7 @@ function App() {
           hidden
           lg:block
        bg-gray-200
-       dark:bg-gray-800
+       dark:bg-black
         p-4
       "
       >
@@ -70,7 +70,7 @@ function App() {
       <main
         className="
     bg-gray-100
-    dark:bg-gray-950
+    dark:bg-black
     p-4
   "
       >

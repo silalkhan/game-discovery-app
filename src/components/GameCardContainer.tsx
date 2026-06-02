@@ -12,7 +12,7 @@ const GameCardContainer = ({ children }: Props) => {
         overflow-hidden
         shadow-lg
         bg-white
-        dark:bg-gray-800
+        dark:bg-black
       "
     >
       {children}
