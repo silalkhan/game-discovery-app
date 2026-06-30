@@ -20,7 +20,7 @@ const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
         Genres
       </h1>
       <ul className="space-y-3">
-        {data.map((genre) => (
+        {data?.results.map((genre) => (
           <li
             key={genre.id}
             className="

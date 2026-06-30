@@ -51,7 +51,7 @@ const PlatformSelector = ({ onSelectedPlatfrom, selectedPlatfrom }: Props) => {
             z-50
           "
         >
-          {data.map((platform) => (
+          {data?.results.map((platform) => (
             <button
               key={platform.id}
               onClick={() => {

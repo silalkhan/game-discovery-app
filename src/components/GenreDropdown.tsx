@@ -47,7 +47,7 @@ function GenreDropdown({ selectedGenre, onSelectedGenre }: Props) {
             z-50
           "
         >
-          {genres.map((genre) => {
+          {genres?.results.map((genre) => {
             const isActive = genre.id === selectedGenre?.id;
 
             return (
