@@ -44,12 +44,15 @@ import type { GameQuery } from "../App";
 import type { FetchResponse } from "../services/api-client";
 
 import apiClient from "../services/api-client";
-
+import type { Platform } from "./usePlatforms";// we use common interface everyWhere
+/** 
+ * We should remove this interface.
 export interface Platform {
   id: number;
   name: string;
   slug: string;
 }
+  */
 
 export interface Game {
   id: number;
@@ -61,7 +64,7 @@ export interface Game {
 }
 
 const useGames = (gameQuery: GameQuery) =>
-  useQuery<FetchResponse<Game>,Error>({
+  useQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: () =>
       apiClient
