@@ -16,9 +16,10 @@ export default useGenres;
 
 import { useQuery } from "@tanstack/react-query";
 //import genres from "../data/genres";
-import apiClient from "../services/api-client";
-import type { FetchResponse } from "../services/api-client";
+//import apiClient from "../services/api-client";
+//import type { FetchResponse } from "../services/api-client";
 import genres from "../data/genres";// static data
+import ApiClient from "../services/api-client";
 
 export interface Genre {
   id: number;
@@ -29,17 +30,20 @@ export interface Genre {
   //const useGenres = () => ({ data: genres, isLoading: false, error: null })
 * so replace this object call to useQuery
  */
+//Then create new apiClient here for working with genres
+const apiClient = new ApiClient<Genre>("/genres")
 const useGenres = () =>
   useQuery({
     queryKey: ["genres"],
     //here we aspect that a fetchResponse type genre we don't need to here arry here so here arry is already compare to result property of fetch responsive 
-    queryFn: () => apiClient.get<FetchResponse<Genre>>("/genres").then((res) => res.data),
+    //queryFn: () => apiClient.get<FetchResponse<Genre>>("/genres").then((res) => res.data),// this apiClient is updated
+    queryFn: apiClient.getAll,
     //now here we will apply staleTime becoz a list of genres are never changes  for now i want to set this 24hours
     staleTime: 24 * 60 * 60 * 1000,//24hrs
     // so next thing we can do here initialData so we don't have to go backend data show the user a spinner and skeleton we set the initail data to static data we laod on the top
     //initialData: genres,
     //another we have two options one
-    initialData:{count:genres.length,results:genres}
+    initialData:{count:genres.length,results:genres},
     // after this we cannot see the spinner or skeleton of genre list becoz the data already in the cache
 
   });
