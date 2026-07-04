@@ -39,7 +39,7 @@ export default useGames;
  */
 //Here we do refactor useGames hook into reactQuery
 
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import type { GameQuery } from "../App";
 import type { FetchResponse } from "../services/api-client";
 
@@ -63,7 +63,7 @@ export interface Game {
   rating_top: number;
 }
 //Then create new apiClient here for working with genres
-const apiClient = new ApiClient<Game>("/games");
+/*const apiClient = new ApiClient<Game>("/games");
 const useGames = (gameQuery: GameQuery) =>
   useQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
@@ -90,6 +90,34 @@ const useGames = (gameQuery: GameQuery) =>
           search: gameQuery.searchText,
         },
       }),
+  });
+
+export default useGames;
+*/
+//Now use infiniteQuries so when you implement infiniteQuries so we replace useQuery to useInfiniteQuery
+
+const apiClient = new ApiClient<Game>("/games");
+const useGames = (gameQuery: GameQuery) =>
+  useInfiniteQuery<FetchResponse<Game>, Error>({
+    queryKey: ["games", gameQuery],
+//next we queryFn recevied  pageNumbr as parameter
+initialPageParam: 1,  //provides the first page number.
+    queryFn: ({ pageParam }) =>    //receives whatever page number React Query wants to fetch.
+      apiClient.getAll({
+        params: {
+          genres: gameQuery.genre?.id,
+          //solve bug where platform playstation cannot show
+          parent_platforms: gameQuery.platform?.id,
+          ordering: gameQuery.sortOrder,
+          search: gameQuery.searchText,
+          // so the rawgAPI using a queryParameter called page also page_size and we should pass page paramter to backend
+          page: pageParam
+
+        },
+      }),
+      getNextPageParam:(lastPage,allPages)=>{
+        return lastPage.next ? allPages.length + 1: undefined;
+      }
   });
 
 export default useGames;
