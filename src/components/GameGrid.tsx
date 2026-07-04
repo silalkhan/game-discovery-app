@@ -5,6 +5,7 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   gameQuery: GameQuery;
@@ -20,7 +21,7 @@ function GameGrid({ gameQuery }: Props) {
     error,
     isLoading,
     //here usegame can return inifiniteQuries has we learn  useInfiniteQuries have extra  functions we used here
-    isFetchingNextPage,
+    //isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
   } = useGames(gameQuery);
@@ -29,8 +30,30 @@ function GameGrid({ gameQuery }: Props) {
   //Grid
   if (error)
     return <p className="text-red-500 text-center mb-4">{error.message}</p>;
+  const fetchedGamesCount =
+    // in each iteration we have to count page then added to total
+    data?.pages.reduce((total, page) => total + page.results.length, 0) || 0; // here we give default value || 0
+
   return (
-    <>
+    <InfiniteScroll
+      hasMore={!!hasNextPage} // if we have  undefined converted to boolean should apply double explantion !!
+      dataLength={fetchedGamesCount}
+      next={() => fetchNextPage()}
+      loader={
+        <div className="flex justify-center py-6">
+          <div
+            className="
+        w-8 h-8
+        border-4
+        border-gray-300
+        border-t-blue-600
+        rounded-full
+        animate-spin
+      "
+          />
+        </div>
+      }
+    >
       <div
         className="
           grid
@@ -57,41 +80,42 @@ function GameGrid({ gameQuery }: Props) {
           </React.Fragment>
         ))}
       </div>
-      {hasNextPage && (
-        <div className="flex justify-start mt-8 px-4">
-          <button
-            onClick={() => fetchNextPage()}
-            disabled={isFetchingNextPage}
-            className="
-        w-full
-        sm:w-auto
-        max-w-xs
-        px-6
-        py-3
-        rounded-lg
-        bg-blue-600
-        text-white
-        font-medium
-        hover:bg-blue-700
-        active:scale-95
-        transition-all
-        duration-200
-        disabled:opacity-50
-        disabled:cursor-not-allowed
-      "
-          >
-            {isFetchingNextPage ? "Loading..." : "Load More"}
-          </button>
-        </div>
-      )}
-    </>
+    </InfiniteScroll>
   );
 }
 
 export default GameGrid;
-
+//Becoz of using infiniteScrolling we removed loadMore and Loading... button
+// {hasNextPage && (
+//   <div className="flex justify-start mt-8 px-4">
+//     <button
+//       onClick={() => fetchNextPage()}
+//       disabled={isFetchingNextPage}
+//       className="
+//   w-full
+//   sm:w-auto
+//   max-w-xs
+//   px-6
+//   py-3
+//   rounded-lg
+//   bg-blue-600
+//   text-white
+//   font-medium
+//   hover:bg-blue-700
+//   active:scale-95
+//   transition-all
+//   duration-200
+//   disabled:opacity-50
+//   disabled:cursor-not-allowed
+// "
+//     >
+//       {isFetchingNextPage ? "Loading..." : "Load More"}
+//     </button>
+//   </div>
+// )}
 // {
 //Map each page in react fragment
+//implement loadMore and Loading... button
 //Removed
 /* {data?.results.map((game) => (
   <GameCardContainer key={game.id}>
