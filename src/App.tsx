@@ -2,24 +2,30 @@ import { useState } from "react";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
-import type { Genre } from "./hooks/useGenres";
+//import type { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
-import type { Platform } from "./hooks/usePlatforms";
+//import type { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 import GenreDropdown from "./components/GenreDropdown";
 
+//Undefined: The absence of a value
+//null: The intenational absence of a value
+
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  //genre: number | undefined; // here Genre replace with number | null with undefined
+  // genreId?: number; // make this property optinal so clearity genre replace with genreId
+  // platform: Platform | null;
+  genreId: number | null;
+  platformId: number | null;
   sortOrder: string;
   searchText: string;
 }
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({
-    genre: null,
-    platform: null,
+    genreId: null,
+    platformId: null,
     sortOrder: "",
     searchText: "",
   });
@@ -58,8 +64,10 @@ function App() {
         "
       >
         <GenreList
-          selectedGenre={gameQuery.genre}
-          onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+          selectedGenreId={gameQuery.genreId}
+          onSelectedGenre={(genre) =>
+            setGameQuery({ ...gameQuery, genreId: genre.id })
+          }
         />
       </aside>
 
@@ -74,8 +82,10 @@ function App() {
         {/* Mobile Genre Dropdown */}
         <div className="lg:hidden mb-4">
           <GenreDropdown
-            selectedGenre={gameQuery.genre}
-            onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenreId={gameQuery.genreId}
+            onSelectedGenre={(genre) =>
+              setGameQuery({ ...gameQuery, genreId: genre.id })
+            }
           />
         </div>
 
@@ -85,9 +95,9 @@ function App() {
         {/* Filters */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <PlatformSelector
-            selectedPlatfrom={gameQuery.platform}
+            selectedPlatfromId={gameQuery.platformId}
             onSelectedPlatfrom={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
+              setGameQuery({ ...gameQuery, platformId: platform.id })
             }
           />
 

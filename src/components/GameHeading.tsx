@@ -1,27 +1,33 @@
 import type { GameQuery } from "../App";
+import useGenres from "../hooks/useGenres";
+import usePlatforms from "../hooks/usePlatforms";
 
 interface Props {
   gameQuery: GameQuery;
 }
 
 const GameHeading = ({ gameQuery }: Props) => {
+  const { data: genres } = useGenres();
+  const { data: platforms } = usePlatforms();
+
+  const genre = genres?.results.find((g) => g.id === gameQuery.genreId);
+  const platform = platforms?.results.find(
+    (p) => p.id === gameQuery.platformId,
+  );
+
   let heading = "Games";
 
   if (gameQuery.searchText) {
-    heading = `Search: "${gameQuery.searchText}"`;
-  } else if (gameQuery.platform?.name && gameQuery.genre?.name) {
-    heading = `${gameQuery.platform.name} ${gameQuery.genre.name} Games`;
-  } else if (gameQuery.platform?.name) {
-    heading = `${gameQuery.platform.name} Games`;
-  } else if (gameQuery.genre?.name) {
-    heading = `${gameQuery.genre.name} Games`;
+    heading = `"${gameQuery.searchText}" Games`;
+  } else if (platform && genre) {
+    heading = `${platform.name} ${genre.name} Games`;
+  } else if (platform) {
+    heading = `${platform.name} Games`;
+  } else if (genre) {
+    heading = `${genre.name} Games`;
   }
 
-  return (
-    <h1 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-      {heading}
-    </h1>
-  );
+  return <h1 className="mb-6 text-3xl font-bold dark:text-white">{heading}</h1>;
 };
 
 export default GameHeading;

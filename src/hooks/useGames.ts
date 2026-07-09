@@ -107,9 +107,9 @@ const useGames = (gameQuery: GameQuery) =>
     ) =>
       apiClient.getAll({
         params: {
-          genres: gameQuery.genre?.id,
+          genres: gameQuery.genreId,// when calling the backend only pass in genreId
           //solve bug where platform playstation cannot show
-          parent_platforms: gameQuery.platform?.id,
+          parent_platforms: gameQuery.platformId,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
           // so the rawgAPI using a queryParameter called page also page_size and we should pass page paramter to backend
