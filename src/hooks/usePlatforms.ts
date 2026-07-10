@@ -22,6 +22,7 @@ import platforms from "../data/platforms";
 //import apiClient from "../services/api-client";
 //import type { FetchResponse } from "../services/api-client";
 import ApiClient from "../services/api-client";
+import ms from "ms";
 
 export interface Platform {
   id: number;
@@ -40,7 +41,7 @@ const usePlatforms = () =>
     //     .get<FetchResponse<Platform>>("/platforms/lists/parents")
     //     .then((res) => res.data),
     queryFn:apiClient.getAll,
-    staleTime: 24 * 60 * 60 * 1000, //24hrs
+    staleTime: ms('24h'), //24hrs
     initialData: platforms,
   });
 export default usePlatforms;

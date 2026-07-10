@@ -20,6 +20,7 @@ import { useQuery } from "@tanstack/react-query";
 //import type { FetchResponse } from "../services/api-client";
 import genres from "../data/genres";// static data
 import ApiClient from "../services/api-client";
+import ms from 'ms';
 
 export interface Genre {
   id: number;
@@ -39,7 +40,8 @@ const useGenres = () =>
     //queryFn: () => apiClient.get<FetchResponse<Genre>>("/genres").then((res) => res.data),// this apiClient is updated
     queryFn: apiClient.getAll,
     //now here we will apply staleTime becoz a list of genres are never changes  for now i want to set this 24hours
-    staleTime: 24 * 60 * 60 * 1000,//24hrs
+    //staleTime: 24 * 60 * 60 * 1000,//24hrs
+    staleTime: ms("24h"),
     // so next thing we can do here initialData so we don't have to go backend data show the user a spinner and skeleton we set the initail data to static data we laod on the top
     //initialData: genres,
     //another we have two options one
@@ -49,3 +51,9 @@ const useGenres = () =>
   });
 
 export default useGenres;
+
+/**
+ * here i use ms libray where i install from npm i ms for typeScript and only need for developmnt not for production npm i -D @types/ms
+ * Use this package to easily convert various time formats to milliseconds.
+ * 
+ */
