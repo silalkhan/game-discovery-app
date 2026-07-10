@@ -4,7 +4,7 @@ import GenreListSkeleton from "./GenreListSkeleton";
 
 interface Props {
   onSelectedGenre: (genre: Genre) => void;
-  selectedGenreId: number | null;
+  selectedGenreId?: number;
 }
 
 const GenreList = ({ selectedGenreId, onSelectedGenre }: Props) => {

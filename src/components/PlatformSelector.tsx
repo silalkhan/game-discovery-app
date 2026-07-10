@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import usePlatforms, { type Platform } from "../hooks/usePlatforms";
+import usePlatform from "../hooks/usePlatform";
 
 interface Props {
   onSelectedPlatfrom: (platform: Platform) => void;
   // selectedPlatfrom: Platform | null;
-  selectedPlatfromId: number | null;
+  //selectedPlatfromId: number | null;
+  selectedPlatfromId?: number;
 }
 
 const PlatformSelector = ({
@@ -15,9 +17,7 @@ const PlatformSelector = ({
 }: Props) => {
   const { data, error } = usePlatforms();
   const [isOpen, setIsOpen] = useState(false);
-  const selectedPlatfrom = data?.results.find(
-    (p) => p.id === selectedPlatfromId,
-  );
+  const selectedPlatfrom = usePlatform(selectedPlatfromId);
 
   if (error) return null;
 

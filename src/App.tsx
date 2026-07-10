@@ -16,16 +16,18 @@ export interface GameQuery {
   //genre: number | undefined; // here Genre replace with number | null with undefined
   // genreId?: number; // make this property optinal so clearity genre replace with genreId
   // platform: Platform | null;
-  genreId: number | null;
-  platformId: number | null;
+  //genreId: number | null;
+  //platformId: number | null;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string;
   searchText: string;
 }
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({
-    genreId: null,
-    platformId: null,
+    genreId: undefined,
+    platformId: undefined,
     sortOrder: "",
     searchText: "",
   });

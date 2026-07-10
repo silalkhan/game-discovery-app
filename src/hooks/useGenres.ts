@@ -43,7 +43,7 @@ const useGenres = () =>
     // so next thing we can do here initialData so we don't have to go backend data show the user a spinner and skeleton we set the initail data to static data we laod on the top
     //initialData: genres,
     //another we have two options one
-    initialData:{count:genres.length,results:genres},
+    initialData: genres
     // after this we cannot see the spinner or skeleton of genre list becoz the data already in the cache
 
   });
