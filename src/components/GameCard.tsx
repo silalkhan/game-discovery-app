@@ -1,4 +1,5 @@
-import type { Game } from "../hooks/useGames";
+//import type { Game } from "../hooks/useGames";
+import type { Game } from "../types/Game"; // for mockData use this import
 import getCroppedImageUrl from "../services/image-url";
 import CriticScore from "./CriticScore";
 import Emoji from "./Emoji";

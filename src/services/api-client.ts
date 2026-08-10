@@ -39,7 +39,7 @@ class ApiClient<T> {
     this.endpoint = endpoint;
   }
   //In this I create single method called GetAll
-  getAll = (config: AxiosRequestConfig) => {
+  getAll = (config?: AxiosRequestConfig) => {
     //In our games hook we need a configuration object for passing our query string parameters to backend
     //Hover get method look type of config object which is AxiosRequestConfig so we should add that in as a optional parameter to this method
     return (
