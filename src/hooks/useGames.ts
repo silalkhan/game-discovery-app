@@ -43,7 +43,7 @@ export default useGames;
 // import type { GameQuery } from "../App";
 // import type { FetchResponse } from "../services/api-client";
 
-import type { Platform } from "./usePlatforms"; // we use common interface everyWhere
+//import type { Platform } from "./usePlatforms"; // we use common interface everyWhere
 // import ApiClient from "../services/api-client";
 // import ms from "ms";
 /** 
@@ -55,14 +55,14 @@ export interface Platform {
 }
   */
 
-export interface Game {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-  rating_top: number;
-}
+// export interface Game {
+//   id: number;
+//   name: string;
+//   background_image: string;
+//   parent_platforms: { platform: Platform }[];
+//   metacritic: number;
+//   rating_top: number;
+// }
 //Then create new apiClient here for working with genres
 /*const apiClient = new ApiClient<Game>("/games");
 const useGames = (gameQuery: GameQuery) =>
@@ -132,14 +132,84 @@ apiClient.getAll({
     */
 
 //For Local data I customize this useHook for some days we use local data when server onlines then we shift to RawgApi.....
-import { useMemo } from "react";
-import type { GameQuery } from "../App";
-import games from "../data/games";
+// import { useMemo } from "react";
+// import type { GameQuery } from "../App";
+// import games from "../data/games";
 
-const useGames = (gameQuery: GameQuery) => {
+// const useGames = (gameQuery: GameQuery) => {
+//   const filteredGames = useMemo(() => {
+//     let result = [...games];
+
+//     if (gameQuery.searchText) {
+//       result = result.filter((game) =>
+//         game.name
+//           .toLowerCase()
+//           .includes(gameQuery.searchText.toLowerCase()),
+//       );
+//     }
+
+//     if (gameQuery.platformId) {
+//       result = result.filter((game) =>
+//         game.parent_platforms.some(
+//           ({ platform }) => platform.id === gameQuery.platformId,
+//         ),
+//       );
+//     }
+
+//     if (gameQuery.sortOrder === "name") {
+//       result.sort((a, b) => a.name.localeCompare(b.name));
+//     }
+
+//     if (gameQuery.sortOrder === "-name") {
+//       result.sort((a, b) => b.name.localeCompare(a.name));
+//     }
+
+//     if (gameQuery.sortOrder === "-metacritic") {
+//       result.sort((a, b) => b.metacritic - a.metacritic);
+//     }
+
+//     if (gameQuery.sortOrder === "metacritic") {
+//       result.sort((a, b) => a.metacritic - b.metacritic);
+//     }
+
+//     return result;
+//   }, [gameQuery]);
+
+//   return {
+//     data: {
+//       pages: [
+//         {
+//           results: filteredGames,
+//           count: filteredGames.length,
+//           next: null,
+//         },
+//       ],
+//     },
+
+//     isLoading: false,
+//     isFetchingNextPage: false,
+//     hasNextPage: false,
+
+//     fetchNextPage: () => {},
+
+//     error: null,
+//   };
+// };
+
+// export default useGames;
+
+////Managing state by using zustand.... so removing props...
+import { useMemo } from "react";
+import games from "../data/games";
+import useGameQueryStore from "../store";
+
+const useGames = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
+
   const filteredGames = useMemo(() => {
     let result = [...games];
 
+    // Search
     if (gameQuery.searchText) {
       result = result.filter((game) =>
         game.name
@@ -148,6 +218,7 @@ const useGames = (gameQuery: GameQuery) => {
       );
     }
 
+    // Platform
     if (gameQuery.platformId) {
       result = result.filter((game) =>
         game.parent_platforms.some(
@@ -156,18 +227,22 @@ const useGames = (gameQuery: GameQuery) => {
       );
     }
 
+    // Sort by name
     if (gameQuery.sortOrder === "name") {
       result.sort((a, b) => a.name.localeCompare(b.name));
     }
 
+    // Sort by name descending
     if (gameQuery.sortOrder === "-name") {
       result.sort((a, b) => b.name.localeCompare(a.name));
     }
 
+    // Sort by Metacritic descending
     if (gameQuery.sortOrder === "-metacritic") {
       result.sort((a, b) => b.metacritic - a.metacritic);
     }
 
+    // Sort by Metacritic ascending
     if (gameQuery.sortOrder === "metacritic") {
       result.sort((a, b) => a.metacritic - b.metacritic);
     }

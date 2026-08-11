@@ -1,4 +1,4 @@
-import type { Game } from "../hooks/useGames";
+import type { Game } from "../types/Game";
 
 const games: Game[] = [
   {
