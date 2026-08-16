@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 import useGameQueryStore from "../store";
+import { useNavigate } from "react-router-dom";
 
 // interface Props {
 //   onSearch: (searchText: string) => void;
@@ -56,6 +57,7 @@ const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
   //when the user submits the form we need to call onSearch to update search text to this value onSearch(ref.current.value.trim());Now we use GameQueryStore...
   const setSearchText = useGameQueryStore((selector) => selector.setSearchText);
+  const navigate = useNavigate();
   return (
     <form
       className="flex-1 min-w-0"
@@ -64,6 +66,7 @@ const SearchInput = () => {
 
         if (ref.current) {
           setSearchText(ref.current.value.trim());
+          navigate("/");
         }
       }}
     >
