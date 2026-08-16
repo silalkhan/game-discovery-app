@@ -23,4 +23,9 @@ export interface Game {
   }[];
   metacritic: number;
   rating_top: number;
+}export interface Genre {
+  id: number;
+  name: string;
+  image_background: string;
 }
+

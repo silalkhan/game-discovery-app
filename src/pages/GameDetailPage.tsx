@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
+import ExpendableText from "../components/ExpendableText";
 
 const GameDetailPage = () => {
   const { id } = useParams();
@@ -31,9 +32,7 @@ const GameDetailPage = () => {
         <section className="mb-8">
           <h2 className="mb-3 text-2xl font-bold">About the Game</h2>
 
-          <p className="max-w-4xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-            {game.description}
-          </p>
+          <ExpendableText>{game.description}</ExpendableText>
         </section>
 
         {/* Information */}
