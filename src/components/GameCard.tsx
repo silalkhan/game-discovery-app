@@ -4,6 +4,7 @@ import getCroppedImageUrl from "../services/image-url";
 import CriticScore from "./CriticScore";
 import Emoji from "./Emoji";
 import PlatefromIconList from "./PlatefromIconList";
+import { Link } from "react-router-dom";
 
 interface Props {
   game: Game;
@@ -40,7 +41,29 @@ function GameCard({ game }: Props) {
         </div>
 
         {/* Game Title */}
-        <h2
+        <Link
+          to={`/games/${game.id}`}
+          className="
+            text-xl
+            font-bold
+            text-gray-800
+            dark:text-white
+          "
+        >
+          {game.name}
+        </Link>
+        <Emoji rating={game.rating_top} />
+      </div>
+    </div>
+  );
+}
+
+export default GameCard;
+
+//In this code Make the game clickable
+/**
+ * use link component instead of h2 tag
+ * <h2
           className="
             text-xl
             font-bold
@@ -50,10 +73,4 @@ function GameCard({ game }: Props) {
         >
           {game.name}
         </h2>
-        <Emoji rating={game.rating_top} />
-      </div>
-    </div>
-  );
-}
-
-export default GameCard;
+ */

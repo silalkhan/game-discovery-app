@@ -13,6 +13,8 @@ const games: Game[] = [
     ],
     metacritic: 97,
     rating_top: 5,
+    description:
+      "Grand Theft Auto V is an open-world action-adventure game set in the fictional state of San Andreas. Players follow three criminals whose lives become connected through dangerous heists, missions, and criminal activities.",
   },
 
   {
@@ -27,6 +29,8 @@ const games: Game[] = [
     ],
     metacritic: 92,
     rating_top: 5,
+    description:
+      "The Witcher 3: Wild Hunt is an open-world role-playing game following Geralt of Rivia, a monster hunter searching for his adopted daughter while facing wars, dangerous creatures, and difficult choices.",
   },
 
   {
@@ -40,6 +44,8 @@ const games: Game[] = [
     ],
     metacritic: 94,
     rating_top: 5,
+    description:
+      "God of War follows Kratos and his young son Atreus as they journey through the dangerous world of Norse mythology. Together they face powerful enemies while learning about family, loss, and responsibility.",
   },
 
   {
@@ -54,6 +60,8 @@ const games: Game[] = [
     ],
     metacritic: 93,
     rating_top: 5,
+    description:
+      "Minecraft is a sandbox game where players explore procedurally generated worlds, collect resources, build structures, craft items, and survive against dangerous creatures.",
   },
 
   {
@@ -68,6 +76,8 @@ const games: Game[] = [
     ],
     metacritic: 97,
     rating_top: 5,
+    description:
+      "Red Dead Redemption 2 is an open-world western adventure following Arthur Morgan and the Van der Linde gang. Players explore the American frontier while surviving missions, conflicts, and the decline of the outlaw era.",
   },
 
   {
@@ -82,6 +92,8 @@ const games: Game[] = [
     ],
     metacritic: 86,
     rating_top: 4,
+    description:
+      "Cyberpunk 2077 is an open-world action RPG set in Night City, a futuristic metropolis controlled by corporations and gangs. Players control V, a mercenary searching for a mysterious implant that could change their life.",
   },
 
   {
@@ -96,6 +108,8 @@ const games: Game[] = [
     ],
     metacritic: 96,
     rating_top: 5,
+    description:
+      "Elden Ring is an open-world action RPG set in the mysterious Lands Between. Players explore a vast world, fight powerful enemies and bosses, discover hidden areas, and create their own character and playstyle.",
   },
 
   {
@@ -110,6 +124,8 @@ const games: Game[] = [
     ],
     metacritic: 84,
     rating_top: 4,
+    description:
+      "Hogwarts Legacy is an open-world action RPG set in the Wizarding World during the 1800s. Players create a student, attend Hogwarts, learn magical abilities, explore the surrounding world, and uncover an ancient mystery.",
   },
 
   {
@@ -123,6 +139,8 @@ const games: Game[] = [
     ],
     metacritic: 87,
     rating_top: 4,
+    description:
+      "Marvel's Spider-Man Remastered is an action-adventure game where players control Peter Parker as Spider-Man. Swing across New York City, fight criminals, complete missions, and protect the city from dangerous threats.",
   },
 
   {
@@ -136,6 +154,8 @@ const games: Game[] = [
     ],
     metacritic: 92,
     rating_top: 5,
+    description:
+      "Forza Horizon 5 is an open-world racing game set across a fictionalized version of Mexico. Players drive a large collection of cars, compete in races, explore the world, and customize their vehicles.",
   },
 
   {
@@ -150,6 +170,8 @@ const games: Game[] = [
     ],
     metacritic: 93,
     rating_top: 5,
+    description:
+      "Hades is a fast-paced action roguelike game where Zagreus, the son of Hades, attempts to escape the Underworld. Players battle through changing environments while gaining new abilities and uncovering the story of the gods.",
   },
 
   {
@@ -164,6 +186,8 @@ const games: Game[] = [
     ],
     metacritic: 84,
     rating_top: 4,
+    description:
+      "Resident Evil Village is a survival horror game following Ethan Winters as he searches for his kidnapped daughter in a mysterious European village filled with terrifying creatures and dangerous enemies.",
   },
 
   {
@@ -178,6 +202,8 @@ const games: Game[] = [
     ],
     metacritic: 80,
     rating_top: 4,
+    description:
+      "Assassin's Creed Valhalla follows Eivor, a Viking warrior who leads their clan from Norway to England. Players explore the world, raid settlements, build alliances, and take part in conflicts between kingdoms.",
   },
 
   {
@@ -192,6 +218,8 @@ const games: Game[] = [
     ],
     metacritic: 86,
     rating_top: 4,
+    description:
+      "Rocket League combines football with rocket-powered cars. Players compete in fast matches where they drive, jump, boost, and perform aerial moves to score goals against the opposing team.",
   },
 
   {
@@ -206,6 +234,8 @@ const games: Game[] = [
     ],
     metacritic: 88,
     rating_top: 4,
+    description:
+      "DOOM Eternal is a fast-paced first-person shooter where players take control of the Doom Slayer and fight armies of demons. The game focuses on aggressive combat, powerful weapons, movement, and resource management.",
   },
 
   {
@@ -219,6 +249,8 @@ const games: Game[] = [
     ],
     metacritic: 84,
     rating_top: 4,
+    description:
+      "Horizon Zero Dawn is an open-world action RPG following Aloy, a young hunter living in a world dominated by mysterious machines. She explores the wilderness, hunts machines, and discovers the secrets of her world.",
   },
 
   {
@@ -232,6 +264,8 @@ const games: Game[] = [
     ],
     metacritic: 86,
     rating_top: 4,
+    description:
+      "Death Stranding is an unusual action game set in a world separated by a mysterious catastrophe. Players control Sam Porter Bridges as he travels across dangerous landscapes and reconnects isolated communities.",
   },
 
   {
@@ -246,6 +280,8 @@ const games: Game[] = [
     ],
     metacritic: 90,
     rating_top: 5,
+    description:
+      "Sekiro: Shadows Die Twice is an action-adventure game set in a fictionalized version of 16th-century Japan. Players control a shinobi who uses precise sword combat, stealth, and special abilities to defeat challenging enemies.",
   },
 
   {
@@ -260,6 +296,8 @@ const games: Game[] = [
     ],
     metacritic: 93,
     rating_top: 5,
+    description:
+      "Resident Evil 4 follows Leon S. Kennedy as he travels to a remote European village to rescue the president's daughter. Players fight infected enemies, solve puzzles, manage resources, and uncover a dangerous conspiracy.",
   },
 
   {
@@ -274,6 +312,8 @@ const games: Game[] = [
     ],
     metacritic: 96,
     rating_top: 5,
+    description:
+      "Baldur's Gate 3 is a fantasy role-playing game based on Dungeons & Dragons. Players create a character, explore a large world, form a party, make important choices, and battle enemies using turn-based combat.",
   },
 
   {
@@ -284,6 +324,8 @@ const games: Game[] = [
     parent_platforms: [{ platform: { id: 4, name: "PC", slug: "pc" } }],
     metacritic: 95,
     rating_top: 5,
+    description:
+      "Portal 2 is a puzzle-platform game where players use the Portal Gun to create linked portals and solve challenging test chambers. The game combines physics-based puzzles with a humorous story and memorable characters.",
   },
 
   {
@@ -298,6 +340,8 @@ const games: Game[] = [
     ],
     metacritic: 74,
     rating_top: 4,
+    description:
+      "Dying Light is an open-world survival action game set in a city overrun by zombies. Players use parkour to move through the environment, search for supplies, complete missions, and survive increasingly dangerous nights.",
   },
 
   {
@@ -312,6 +356,8 @@ const games: Game[] = [
     ],
     metacritic: 82,
     rating_top: 4,
+    description:
+      "Control is a supernatural action-adventure game following Jesse Faden as she explores a mysterious government building affected by strange paranormal forces. Players use weapons and supernatural abilities to uncover the building's secrets.",
   },
 
   {
@@ -326,6 +372,8 @@ const games: Game[] = [
     ],
     metacritic: 87,
     rating_top: 5,
+    description:
+      "Hollow Knight is a challenging 2D action-adventure game set in the mysterious underground kingdom of Hallownest. Players explore interconnected areas, fight strange creatures, discover secrets, and face powerful bosses.",
   },
 
   {
@@ -340,6 +388,8 @@ const games: Game[] = [
     ],
     metacritic: 89,
     rating_top: 5,
+    description:
+      "Stardew Valley is a farming and life simulation game where players inherit an old farm and work to restore it. Players can grow crops, raise animals, explore mines, build relationships, and become part of the local community.",
   },
 ];
 
