@@ -13,19 +13,30 @@ import type { Platform } from "../hooks/usePlatforms";
 //   rating_top: number;
 // }
 //for description..
+// Create this file only for mock data.
+
+
+
 export interface Game {
   id: number;
   name: string;
   background_image: string;
   description: string;
+
   parent_platforms: {
     platform: Platform;
   }[];
+
   metacritic: number;
   rating_top: number;
-}export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
 
+  genres: {
+    id: number;
+    name: string;
+  }[];
+
+  publishers: {
+    id: number;
+    name: string;
+  }[];
+}
