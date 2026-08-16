@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
 import ExpendableText from "../components/ExpendableText";
 import GameTrailer from "../components/GameTrailer";
+import GameScreenshots from "../components/GameScreenshots";
 
 const GameDetailPage = () => {
   const { id } = useParams();
@@ -79,6 +80,11 @@ const GameDetailPage = () => {
               <div className="overflow-hidden rounded-2xl bg-black shadow-xl ring-1 ring-gray-200 dark:ring-gray-800">
                 <GameTrailer gameId={game.id} />
               </div>
+            </section>
+
+            {/* Screenshots */}
+            <section className="mt-10">
+              <GameScreenshots gameId={game.id} />
             </section>
           </div>
 
@@ -184,7 +190,7 @@ const GameDetailPage = () => {
                     game.publishers.map((publisher) => (
                       <span
                         key={publisher.id}
-                        className="rounded-lg bg-purple-50 px-3 py-1.5 text-sm font-medium text-purple-700 transition-colors hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-300 dark:hover:bg-purple-900/50"
+                        className="rounded-lg bg-purple-50 px-3 py-1.5 text-sm font-medium text-purple-700 transition-colors hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-300"
                       >
                         {publisher.name}
                       </span>
