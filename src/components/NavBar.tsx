@@ -1,46 +1,54 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/gameHublogo.webp";
+import logo from "../assets/logo.webp";
 import SearchInput from "./SearchInput";
 import ThemeBtn from "./ThemeBtn";
-
-// interface Props {
-//   onSearch: (searchText: string) => void;
-// }
-// function NavBar({ onSearch }: Props) {
-//   return (
-//     <div className="flex items-center gap-3 w-full">
-//       <img
-//         src={logo}
-//         alt="GameHub Logo"
-//         className="w-16 h-16 md:w-24 md:h-24 object-contain shrink-0"
-//       />
-
-//       <SearchInput onSearch={onSearch} />
-
-//       <ThemeBtn />
-//     </div>
-//   );
-// }
-
-// export default NavBar;
-
-//Managing state by using zustand.... so removing props
+import useGameQueryStore from "../store";
 
 function NavBar() {
+  const setSearchText = useGameQueryStore((selector) => selector.setSearchText);
+
+  const handleLogoClick = () => {
+    setSearchText("");
+  };
+
   return (
-    <div className="flex items-center gap-3 w-full px-5 py-1">
-      <Link to="/">
-        <img
-          src={logo}
-          alt="GameHub Logo"
-          className="w-16 h-16 md:w-24 md:h-24 object-contain shrink-0"
-        />
-      </Link>
+    <nav
+      className="
+        w-full
+        border-b
+        border-gray-200
+        bg-white
+        px-4
+        py-2
+        dark:border-gray-800
+        dark:bg-black
+      "
+    >
+      <div className="flex w-full items-center gap-4">
+        {/* Logo */}
+        <Link to="/" onClick={handleLogoClick} className="shrink-0">
+          <img
+            src={logo}
+            alt="GameHub Logo"
+            className="
+              h-14
+              w-14
+              object-contain
+              sm:h-16
+              sm:w-16
+            "
+          />
+        </Link>
 
-      <SearchInput />
+        {/* Search */}
+        <SearchInput />
 
-      <ThemeBtn />
-    </div>
+        {/* Theme */}
+        <div className="shrink-0">
+          <ThemeBtn />
+        </div>
+      </div>
+    </nav>
   );
 }
 

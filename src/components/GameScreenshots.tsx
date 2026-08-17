@@ -11,23 +11,29 @@ const GameScreenshots = ({ gameId }: Props) => {
 
   if (error) throw error;
 
-  if (!data?.results.length) return null;
+  const screenshots = data?.results ?? [];
+
+  if (screenshots.length === 0) {
+    return (
+      <div className="flex min-h-40 items-center justify-center rounded-2xl bg-gray-100 p-6 text-center dark:bg-gray-900">
+        <p className="text-gray-500 dark:text-gray-400">
+          No screenshots available for this game.
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <section className="mt-10">
-      <h2 className="mb-5 text-2xl font-bold sm:text-3xl">Screenshots</h2>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        {data.results.map((screenshot) => (
-          <img
-            key={screenshot.id}
-            src={screenshot.image}
-            alt="Game screenshot"
-            className="aspect-video w-full rounded-xl object-cover shadow-md transition duration-300 hover:scale-[1.02] hover:shadow-xl"
-          />
-        ))}
-      </div>
-    </section>
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      {screenshots.map((screenshot) => (
+        <img
+          key={screenshot.id}
+          src={screenshot.image}
+          alt="Game screenshot"
+          className="w-full rounded-xl object-cover shadow-md transition-transform duration-300 hover:scale-[1.02]"
+        />
+      ))}
+    </div>
   );
 };
 

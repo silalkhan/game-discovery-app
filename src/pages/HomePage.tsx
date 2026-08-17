@@ -1,5 +1,3 @@
-//This homePage is very simillar to app component..
-
 import GameGrid from "../components/GameGrid";
 import GameHeading from "../components/GameHeading";
 import GenreDropdown from "../components/GenreDropdown";
@@ -12,54 +10,67 @@ const HomePage = () => {
     <div
       className="
         min-h-screen
-        grid
-        grid-cols-1
-        lg:grid-cols-[220px_1fr]
-        grid-rows-[auto_1fr]
+        bg-gray-100
+        text-gray-900
+        dark:bg-black
+        dark:text-white
       "
     >
-      {/* Desktop Sidebar */}
-      <aside
-        className="
-          hidden
-          lg:block
-          p-4
-          bg-gray-200
-          dark:bg-black
-        "
-      >
-        <GenreList />
-      </aside>
+      <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr]">
+        {/* Desktop Sidebar */}
+        <aside
+          className="
+            hidden
+            border-r
+            border-gray-200
+            bg-gray-100
+            p-5
+            lg:block
+            dark:border-gray-800
+            dark:bg-black
+          "
+        >
+          <GenreList />
+        </aside>
 
-      {/* Main Content */}
-      <main
-        className="
-          p-4
-          bg-gray-100
-          dark:bg-black
-        "
-      >
-        {/* Mobile Genre Dropdown */}
-        <div className="lg:hidden mb-4">
-          <GenreDropdown />
-        </div>
+        {/* Main Content */}
+        <main
+          className="
+            min-w-0
+            px-4
+            py-6
+            sm:px-6
+            lg:px-8
+          "
+        >
+          {/* Mobile Genre Dropdown */}
+          <div className="mb-5 lg:hidden">
+            <GenreDropdown />
+          </div>
 
-        {/* Heading */}
-        <GameHeading />
+          {/* Heading */}
+          <GameHeading />
 
-        {/* Filters */}
-        <div className="flex flex-wrap items-center gap-3 mb-6">
-          <PlatformSelector />
+          {/* Filters */}
+          <div
+            className="
+              mb-6
+              flex
+              flex-wrap
+              items-center
+              gap-3
+            "
+          >
+            <PlatformSelector />
+            <SortSelector />
+          </div>
 
-          <SortSelector />
-        </div>
-
-        {/* Games */}
-        <GameGrid />
-      </main>
+          {/* Games */}
+          <GameGrid />
+        </main>
+      </div>
     </div>
   );
 };
 
 export default HomePage;
-//past from appcompnent now we should create route file..

@@ -5,19 +5,7 @@ interface Props {
 }
 
 const GameCardContainer = ({ children }: Props) => {
-  return (
-    <div
-      className="
-        rounded-lg
-        overflow-hidden
-        shadow-lg
-        bg-white
-        dark:bg-black
-      "
-    >
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 };
 
 export default GameCardContainer;

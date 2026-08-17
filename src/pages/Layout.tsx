@@ -1,22 +1,37 @@
-/**For react-routing we have create pages where we add multpile pages for application we wanna separate these pages for our components
- * first we need layout.tsx this is where specified that all pages should have navigation bar on the top.
- *
- */
-
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
 const Layout = () => {
   return (
     <div
-      className=" bg-white
+      className="
+        min-h-screen
+        bg-white
         text-black
+        transition-colors
+        duration-300
         dark:bg-black
         dark:text-white
-        transition-colors
-        duration-300"
+      "
     >
-      <NavBar />
+      {/* Navigation */}
+      <header
+        className="
+          sticky
+          top-0
+          z-50
+          border-b
+          border-gray-200
+          bg-white/95
+          backdrop-blur
+          dark:border-gray-800
+          dark:bg-black/95
+        "
+      >
+        <NavBar />
+      </header>
+
+      {/* Page Content */}
       <Outlet />
     </div>
   );

@@ -19,8 +19,8 @@ function ThemeBtn() {
           peer-checked:bg-green-600
           after:content-['']
           after:absolute
-          after:top-[2px]
-          after:left-[2px]
+          after:top-0.5
+          after:left-0.5
           after:bg-white
           after:border-gray-300
           after:border

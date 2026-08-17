@@ -5,10 +5,40 @@ import GameTrailer from "../components/GameTrailer";
 import GameScreenshots from "../components/GameScreenshots";
 
 const GameDetailPage = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
 
-  const { data: game } = useGame(Number(id));
+  const { data: game, isLoading, error } = useGame(slug!);
 
+  // Loading
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 dark:bg-black">
+        {/* Spinner */}
+        <div
+          className="h-12 w-12 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600 dark:border-gray-700 dark:border-t-blue-500"
+          aria-label="Loading"
+        />
+
+        {/* Loading Text */}
+        <p className="mt-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+          Loading game...
+        </p>
+      </div>
+    );
+  }
+
+  // Error
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 dark:bg-black">
+        <p className="rounded-xl bg-white px-8 py-6 text-center text-xl font-semibold text-red-500 shadow-lg dark:bg-gray-900">
+          Something went wrong while loading the game.
+        </p>
+      </div>
+    );
+  }
+
+  // Game not found
   if (!game) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 dark:bg-black">
@@ -19,7 +49,7 @@ const GameDetailPage = () => {
     );
   }
 
-  // Metacritic color based on score
+  // Metacritic color
   const metacriticColor =
     game.metacritic >= 90
       ? "text-green-500"
@@ -27,6 +57,7 @@ const GameDetailPage = () => {
         ? "text-yellow-500"
         : "text-red-500";
 
+  // Metacritic background
   const metacriticBg =
     game.metacritic >= 90
       ? "bg-green-500/10 ring-green-500/20"
@@ -84,6 +115,10 @@ const GameDetailPage = () => {
 
             {/* Screenshots */}
             <section className="mt-10">
+              <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
+                Screenshots
+              </h2>
+
               <GameScreenshots gameId={game.id} />
             </section>
           </div>
@@ -111,7 +146,7 @@ const GameDetailPage = () => {
                   </span>
 
                   <span
-                    className={`rounded-full px-3 py-1 text-xs font-semibold ${metacriticColor} bg-white/70 dark:bg-black/30`}
+                    className={`rounded-full bg-white/70 px-3 py-1 text-xs font-semibold ${metacriticColor} dark:bg-black/30`}
                   >
                     {game.metacritic >= 90
                       ? "Excellent"
@@ -190,7 +225,7 @@ const GameDetailPage = () => {
                     game.publishers.map((publisher) => (
                       <span
                         key={publisher.id}
-                        className="rounded-lg bg-purple-50 px-3 py-1.5 text-sm font-medium text-purple-700 transition-colors hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-300"
+                        className="rounded-lg bg-purple-50 px-3 py-1.5 text-sm font-medium text-purple-700 transition-colors hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-300 dark:hover:bg-purple-900/50"
                       >
                         {publisher.name}
                       </span>

@@ -3,64 +3,16 @@ import { BsSearch } from "react-icons/bs";
 import useGameQueryStore from "../store";
 import { useNavigate } from "react-router-dom";
 
-// interface Props {
-//   onSearch: (searchText: string) => void;
-// }
-
-// const SearchInput = ({ onSearch }: Props) => {
-//   const ref = useRef<HTMLInputElement>(null);
-
-//   return (
-//     <form
-//       className="flex-1 min-w-0"
-//       onSubmit={(event) => {
-//         event.preventDefault();
-
-//         if (ref.current) {
-//           onSearch(ref.current.value.trim());
-//         }
-//       }}
-//     >
-//       <div className="relative w-full">
-//         <BsSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-
-//         <input
-//           type="text"
-//           ref={ref}
-//           placeholder="Search games..."
-//           className="
-//         w-full
-//         pl-10
-//         pr-4
-//         py-2
-//         rounded-full
-//         bg-gray-100
-//         dark:bg-gray-800
-//         text-gray-800
-//         dark:text-white
-//         placeholder-gray-400
-//         focus:outline-none
-//         focus:ring-2
-//         focus:ring-blue-500
-//       "
-//         />
-//       </div>
-//     </form>
-//   );
-// };
-
-// export default SearchInput;
-
-//Managing state by using zustand.... so removing props
-
 const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
-  //when the user submits the form we need to call onSearch to update search text to this value onSearch(ref.current.value.trim());Now we use GameQueryStore...
+
   const setSearchText = useGameQueryStore((selector) => selector.setSearchText);
+
   const navigate = useNavigate();
+
   return (
     <form
-      className="flex-1 min-w-0"
+      className="min-w-0 flex-1"
       onSubmit={(event) => {
         event.preventDefault();
 
@@ -71,27 +23,58 @@ const SearchInput = () => {
       }}
     >
       <div className="relative w-full">
-        <BsSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+        {/* Search Icon */}
+        <BsSearch
+          className="
+            absolute
+            left-4
+            top-1/2
+            -translate-y-1/2
+            text-gray-400
+            dark:text-gray-500
+          "
+          size={16}
+        />
 
+        {/* Search Input */}
         <input
-          type="text"
           ref={ref}
+          type="text"
           placeholder="Search games..."
           className="
-        w-full
-        pl-10
-        pr-4
-        py-2
-        rounded-full
-        bg-gray-100
-        dark:bg-gray-800
-        text-gray-800
-        dark:text-white
-        placeholder-gray-400
-        focus:outline-none
-        focus:ring-2
-        focus:ring-blue-500
-      "
+            w-full
+            rounded-full
+            border
+            border-gray-200
+            bg-gray-100
+            py-2.5
+            pl-11
+            pr-4
+            text-sm
+            text-gray-800
+            outline-none
+            transition-all
+            duration-200
+
+            placeholder:text-gray-400
+
+            hover:border-gray-300
+
+            focus:border-blue-500
+            focus:bg-white
+            focus:ring-2
+            focus:ring-blue-500/20
+
+            dark:border-gray-800
+            dark:bg-gray-900
+            dark:text-white
+            dark:placeholder:text-gray-500
+
+            dark:hover:border-gray-700
+
+            dark:focus:border-blue-500
+            dark:focus:bg-gray-900
+          "
         />
       </div>
     </form>

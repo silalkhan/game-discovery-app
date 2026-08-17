@@ -7,21 +7,36 @@ interface Props {
 const ExpandableText = ({ children }: Props) => {
   const [expanded, setExpanded] = useState(false);
 
-  const limit = 50;
+  const limit = 300;
 
-  if (children.length <= limit) {
+  // Remove HTML tags only for calculating the text length
+  const plainText = children.replace(/<[^>]*>/g, "");
+
+  const isLongText = plainText.length > limit;
+
+  if (!isLongText) {
     return (
-      <p className="max-w-4xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-        {children}
-      </p>
+      <div
+        className="max-w-4xl text-lg leading-8 text-gray-600 dark:text-gray-300
+                   [&_p]:mb-4 [&_p:last-child]:mb-0
+                   [&_br]:block [&_br]:content-['']"
+        dangerouslySetInnerHTML={{ __html: children }}
+      />
     );
   }
 
-  const summary = children.substring(0, limit);
+  const summary = plainText.substring(0, limit);
 
   return (
-    <p className="max-w-4xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-      {expanded ? children : `${summary}...`}
+    <div className="max-w-4xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+      {expanded ? (
+        <div
+          className="[&_p]:mb-4 [&_p:last-child]:mb-0"
+          dangerouslySetInnerHTML={{ __html: children }}
+        />
+      ) : (
+        <span>{summary}...</span>
+      )}
 
       <button
         type="button"
@@ -30,7 +45,7 @@ const ExpandableText = ({ children }: Props) => {
       >
         {expanded ? "Show Less" : "Read More"}
       </button>
-    </p>
+    </div>
   );
 };
 

@@ -1,10 +1,8 @@
-//make sure use tsx extentions becoz here we references react components..
-
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "./pages/Layout";
-import HomePage from "./pages/HomePage";
-import GameDetailPage from "./pages/GameDetailPage";
 import ErrorPage from "./pages/ErrorPage";
+import GameDetailPage from "./pages/GameDetailPage";
+import HomePage from "./pages/HomePage";
+import Layout from "./pages/Layout";
 
 const router = createBrowserRouter([
   {
@@ -12,14 +10,8 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "games/:id",
-        element: <GameDetailPage />,
-      },
+      { index: true, element: <HomePage /> },
+      { path: "games/:slug", element: <GameDetailPage /> },
     ],
   },
 ]);
