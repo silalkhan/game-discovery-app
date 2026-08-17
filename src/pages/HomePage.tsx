@@ -16,12 +16,6 @@ const HomePage = () => {
         grid-cols-1
         lg:grid-cols-[220px_1fr]
         grid-rows-[auto_1fr]
-        bg-white
-        text-black
-        dark:bg-black
-        dark:text-white
-        transition-colors
-        duration-300
       "
     >
       {/* Desktop Sidebar */}

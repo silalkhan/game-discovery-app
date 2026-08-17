@@ -28,7 +28,7 @@ import ThemeBtn from "./ThemeBtn";
 
 function NavBar() {
   return (
-    <div className="flex items-center gap-3 w-full">
+    <div className="flex items-center gap-3 w-full px-5 py-1">
       <Link to="/">
         <img
           src={logo}
