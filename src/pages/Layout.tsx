@@ -8,10 +8,17 @@ import NavBar from "../components/NavBar";
 
 const Layout = () => {
   return (
-    <>
+    <div
+      className=" bg-white
+        text-black
+        dark:bg-black
+        dark:text-white
+        transition-colors
+        duration-300"
+    >
       <NavBar />
       <Outlet />
-    </>
+    </div>
   );
 };
 
