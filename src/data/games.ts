@@ -1,4 +1,4 @@
-import type { Game } from "../entities/Game";
+import type  Game from "../entities/Game";
 //Mock data..becoz rawg api is not working...
 const games: Game[] = [
   {

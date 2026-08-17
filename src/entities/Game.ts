@@ -17,7 +17,7 @@ import type { Platform } from "../hooks/usePlatforms";
 
 
 
-export interface Game {
+export default interface Game {
   id: number;
   name: string;
   background_image: string;
